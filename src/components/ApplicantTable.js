@@ -133,7 +133,7 @@ function ApplicantTable() {
                 className="row mt-2"
                 style={{ alignItems: "baseline", justifyContent: "center" }}
             >
-                <div className="row">
+                <div className="row sticky">
                     <div className="left-selector-wrapper">
                         <div className={`selector-item ${selectedStep === 'All' && 'active'}`} onClick={() => filterResults('All')}>All Candidates {`( ${applicants && applicants.length} )`}</div>
                         <div className={`selector-item ${selectedStep === 'Paperwork' && 'active'}`} onClick={() => filterResults('Paperwork')}>Paperwork {paperworkCount > 0 && `( ${paperworkCount} )`}</div>
