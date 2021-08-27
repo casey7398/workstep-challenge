@@ -36,7 +36,7 @@ body {
 }
 
 .table-container {
-  min-width: 600px;
+  min-width: 800px;
 }
 
 .applicant-table {
@@ -52,6 +52,13 @@ body {
 
 .applicant-table tr:hover {
   background-color: #dffbf6;
+}
+
+.applicant-table select {
+  padding: 5px;
+  color: #8d8d8d;
+  border: solid 1px #d1d1d1;
+  border-radius: 5px;
 }
 
 .t-head {
@@ -75,6 +82,7 @@ body {
   display: flex;
   align-items: center;
   min-width: 300px;
+  margin-left: 225px;
 }
 
 .search-input {
@@ -104,15 +112,24 @@ body {
   position: relative;
   top: 25px;
   padding: 0px 25px;
+  margin-right: 50px;
   text-transform: uppercase;
   .active {
     font-weight: bold;
     border-left: solid 3px @teal;
+    color: #000;
   }
 }
 
 .selector-item {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding-left: 5px;
   cursor: pointer;
+  color: @slate-grey;
+  transition: background-color .3s;
 }
+
+.selector-item:hover {
+  background-color: #f6f6f6;
+}
+
