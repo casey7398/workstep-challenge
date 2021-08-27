@@ -1,8 +1,10 @@
 const reducer = (state = 0, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case "getAll":
+      return state;
+    default:
+      return state;
+  }
+};
 
 export default reducer;

@@ -30,7 +30,6 @@ function ApplicantTable() {
         `https://my-json-server.typicode.com/workstep/react-challenge-data/candidates`
       )
       .then((res) => {
-        console.log("res.data", res.data);
         if (res.data) {
           setApplicants(res.data);
         } else {
