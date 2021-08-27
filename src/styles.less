@@ -1,0 +1,110 @@
+// Colors
+@light-navy: #eff1f6;
+@medium-navy: #9caac0;
+@navy: #162d54;
+@lightest-grey: #f5f5f5;
+@light-grey: #ddd;
+@mid-grey: #bbb;
+@slate-grey: #9b9b9b;
+@space-grey: #4a4a4a;
+@red-orange: #fc6635;
+@teal: #3defce;
+
+// Styles
+body {
+  font: 15px "Ropa Sans", sans-serif;
+  line-height: 18px;
+}
+
+.header {
+  margin: 15px 0;
+  font-size: 36px;
+  line-height: 46px;
+  color: @navy;
+}
+
+.row {
+  display: flex;
+}
+
+.mt-1 {
+  margin-top: 10px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.table-container {
+    min-width: 600px;
+}
+
+.applicant-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.applicant-table tr {
+    border-bottom: solid 2px @light-grey;
+}
+
+.t-head {
+    font-weight: normal;
+    text-transform: uppercase;
+    color: @mid-grey;
+    padding: 5px;
+    border: none;
+    text-align: left;
+}
+
+.t-item {
+    padding:10px 5px;
+    border: none;
+    text-align: left;
+}
+
+.search-wrapper {
+  border-bottom: solid 2px @teal;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  font-size: 0.9em;
+  color: @navy;
+  padding: 5px 10px;
+  border: none;
+  padding-right: 40px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: @slate-grey;
+}
+
+.heading {
+  font-size: 1em;
+  font-weight: 800;
+  color: @space-grey;
+}
+
+.left-selector-wrapper {
+  position: relative;
+  top: 25px;
+  padding: 0px 25px;
+  text-transform: uppercase;
+  .active {
+    font-weight: bold;
+    border-left: solid 3px @teal;
+  }
+}
+
+.selector-item {
+  margin-bottom: 10px;
+  padding-left: 5px;
+  cursor: pointer;
+}
