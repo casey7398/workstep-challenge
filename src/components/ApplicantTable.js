@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { actionCreators } from '../redux/actionCreators/index';
+import { useSelector } from 'react-redux';
 
 function ApplicantTable() {
     
@@ -10,10 +8,7 @@ function ApplicantTable() {
     const [error, setError] = useState(0);
 
     const them = useSelector((state) => state.applicants);
-    const dispatch = useDispatch();
-
-    const AC = bindActionCreators(actionCreators, dispatch);
-    console.log(AC);
+    console.log(them);
     
     return (
         <>
@@ -34,19 +29,19 @@ function ApplicantTable() {
                     </div>
                 </div>
                 <div className="table-container">
-                    <table class="applicant-table">
+                    <table className="applicant-table">
                         <thead>
                             <tr>
-                                <th class="t-head">Candidate</th>
-                                <th class="t-head">Date Interviewed</th>
-                                <th class="t-head" />
+                                <th className="t-head">Candidate</th>
+                                <th className="t-head">Date Interviewed</th>
+                                <th className="t-head" />
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="t-item"> Casey McIntosh</td>
-                                <td class="t-item"> Thu, Apr 9 2021</td>
-                                <td class="t-item"></td>
+                                <td className="t-item"> Casey McIntosh</td>
+                                <td className="t-item"> Thu, Apr 9 2021</td>
+                                <td className="t-item"></td>
                             </tr>
                         </tbody>
                     </table>

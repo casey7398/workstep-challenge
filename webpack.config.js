@@ -42,6 +42,7 @@ module.exports = {
                 options: {
                     cacheCompression: false,
                     cacheDirectory: true,
+                    plugins: ["@babel/plugin-proposal-export-namespace-from"]
                 },
             },
             {
