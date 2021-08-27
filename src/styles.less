@@ -36,31 +36,37 @@ body {
 }
 
 .table-container {
-    min-width: 600px;
+  min-width: 600px;
 }
 
 .applicant-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .applicant-table tr {
-    border-bottom: solid 2px @light-grey;
+  border-bottom: solid 2px @light-grey;
+  transition: background-color .5s;
+
+}
+
+.applicant-table tr:hover {
+  background-color: #dffbf6;
 }
 
 .t-head {
-    font-weight: normal;
-    text-transform: uppercase;
-    color: @mid-grey;
-    padding: 5px;
-    border: none;
-    text-align: left;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: @mid-grey;
+  padding: 5px;
+  border: none;
+  text-align: left;
 }
 
 .t-item {
-    padding:10px 5px;
-    border: none;
-    text-align: left;
+  padding: 10px 5px;
+  border: none;
+  text-align: left;
 }
 
 .search-wrapper {
