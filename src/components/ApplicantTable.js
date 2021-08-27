@@ -1,34 +1,20 @@
-import axios from 'axios';
-import React, { useEffect, useState } from "react";
-
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../redux/actionCreators/index';
 
 function ApplicantTable() {
+    
     const [loading, setLoading] = useState(true);
     const [applicants, setApplicants] = useState();
     const [error, setError] = useState(0);
 
-    useEffect(() => {
-        axios
-            .get(`https://my-json-server.typicode.com/workstep/react-challenge-data/candidates`)
-            .then((res) => {
-                console.log("res.data", res.data);
-                if (res.data) {
-                    setApplicants(res.data);
-                } else {
-                    setError(404);
-                }
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
+    const them = useSelector((state) => state.applicants);
+    const dispatch = useDispatch();
 
-    if (error) {
-        return <div>Error {error}</div>;
-    }
-
-
+    const AC = bindActionCreators(actionCreators, dispatch);
+    console.log(AC);
+    
     return (
         <>
             {/* search input */}
