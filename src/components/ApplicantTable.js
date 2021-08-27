@@ -1,6 +1,7 @@
 import axios from "axios";
 import moment from 'moment';
 import React, { useEffect, useState } from "react";
+import ToastMessage from './ToastMessage';
 
 function ApplicantTable() {
     const [loading, setLoading] = useState(true);
@@ -8,20 +9,30 @@ function ApplicantTable() {
     const [filteredApplicants, setFilteredApplicants] = useState();
     const [error, setError] = useState(0);
     const [selectedStep, setSelectedStep] = useState("All");
-
+    const [toastMessage, setToastMessage] = useState(false);
+    const [updatedApplicant, setUpdatedApplicant] = useState();
     const paperworkCount = applicants && applicants.filter(x => x.step === 'Paperwork').length
     const backgroundCount = applicants && applicants.filter(x => x.step === 'Background Check').length
     const testCount = applicants && applicants.filter(x => x.step === 'Drug Test').length
 
+    const showToastMessage = () => {
+        setToastMessage(true);
+        setTimeout(() => {
+            setToastMessage(false);
+        }, 5000);
+    };
+
     const updateStep = (e, applicant) => {
         const selectedStep = e.target.value;
+        setUpdatedApplicant(applicant.name);
         console.log(selectedStep);
         axios
             .patch(
                 `https://my-json-server.typicode.com/workstep/react-challenge-data/candidates/${applicant.id}`,
                 { step: selectedStep }
             )
-
+        // normally this would be put in a res success block, but since we dont get that from this api we will just use here
+        showToastMessage()
         // to do: api error handling
         // to do: fetch fresh applicant data after setting new value?
     };
@@ -77,7 +88,7 @@ function ApplicantTable() {
     }
 
     const searchResults = (e) => {
-        console.log(e.target.value)
+        setSelectedStep('All')
         if (e.target.value !== '') {
             setFilteredApplicants(applicants.filter(x => x.name.includes(e.target.value)));
         } else {
@@ -108,7 +119,6 @@ function ApplicantTable() {
 
     return (
         <>
-            {/* search input */}
             <div className="row" style={{ justifyContent: "center" }}>
                 <div className="search-wrapper">
                     <img src="/magGlass.svg" style={{ height: 15 }} />{" "}
@@ -133,7 +143,11 @@ function ApplicantTable() {
                     </div>
                 </div>
                 <div className="table-container">
-                    <table className="applicant-table">
+                    {loading ? (
+                        <>
+                            <h3>Loading Candidates...</h3>
+                        </>
+                    ) : <table className="applicant-table">
                         <thead>
                             <tr>
                                 <th className="t-head">Candidate</th>
@@ -145,8 +159,10 @@ function ApplicantTable() {
                             <RenderedApplicant />
                         </tbody>
                     </table>
+                    }
                 </div>
             </div>
+            {toastMessage && <ToastMessage applicant={updatedApplicant}/>}
         </>
     );
 }
