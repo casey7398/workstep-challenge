@@ -34,7 +34,7 @@ function ApplicantTable() {
         // normally this would be put in a res success block, but since we dont get that from this api we will just use here
         showToastMessage()
         // to do: api error handling
-        // to do: fetch fresh applicant data after setting new value?
+        // to do: fetch fresh applicant data after patching new value?
     };
 
     const StepValues = ({ currentStep, applicant }) => {
@@ -51,7 +51,6 @@ function ApplicantTable() {
     const RenderedApplicant = () => {
         return (
             <>
-
                 {filteredApplicants ? filteredApplicants.map((applicant) => {
                     return (
                         <>
@@ -117,6 +116,7 @@ function ApplicantTable() {
         return <div>Error {error}</div>;
     }
 
+    // to do: mobile optimize
     return (
         <>
             <div className="row" style={{ justifyContent: "center" }}>
