@@ -25,7 +25,6 @@ function ApplicantTable() {
     const updateStep = (e, applicant) => {
         const selectedStep = e.target.value;
         setUpdatedApplicant(applicant.name);
-        console.log(selectedStep);
         axios
             .patch(
                 `https://my-json-server.typicode.com/workstep/react-challenge-data/candidates/${applicant.id}`,
@@ -38,6 +37,8 @@ function ApplicantTable() {
     };
 
     const StepValues = ({ currentStep, applicant }) => {
+        // note. Normally you would patch this data and refresh data source to get updated value. In this scenario, we cant
+        // do that. So the value doesnt actually 'change'. Console.log added in function to show value being changed.
         return (
             <select value={currentStep} onChange={e => updateStep(e, applicant)}>
                 <option value="">CHOOSE STEP</option>
@@ -89,7 +90,7 @@ function ApplicantTable() {
     const searchResults = (e) => {
         setSelectedStep('All')
         if (e.target.value !== '') {
-            setFilteredApplicants(applicants.filter(x => x.name.includes(e.target.value)));
+            setFilteredApplicants(applicants.filter(x => x.name.toLowerCase().includes(e.target.value.toLowerCase())));
         } else {
             setFilteredApplicants(null)
         }
@@ -116,7 +117,6 @@ function ApplicantTable() {
         return <div>Error {error}</div>;
     }
 
-    // to do: mobile optimize
     return (
         <>
             <div className="row" style={{ justifyContent: "center" }}>
